@@ -39,12 +39,11 @@ public class NewScreenShareService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-//        mediaRecorder = new MediaRecorder();
+        mediaRecorder = new MediaRecorder();
         screenInputManager = new ScreenInputManager((AGApplication) getApplication());
         agoraApplication = (AGApplication) getApplication();
         screenShareBinder = new ScreenShareBinder();
         mediaProjectionCallback = new MediaProjectionCallback();
-        agoraApplication.rtcEngine().addPublishStreamUrl("rtmp://18.141.113.171:1935/destA/instA", true);
     }
 
     @Nullable
@@ -107,15 +106,15 @@ public class NewScreenShareService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         startForeground();
-        /*mpm = (MediaProjectionManager) getSystemService
+        mpm = (MediaProjectionManager) getSystemService
                 (Context.MEDIA_PROJECTION_SERVICE);
         mediaProjection = mpm.getMediaProjection(-1, intent);
-        mediaProjection.registerCallback(mediaProjectionCallback, null);*/
-//        initRecorder();
-//        prepareRecorder();
-//        setMediaProjection(mediaProjection);
-//        mediaRecorder.start();
-//        setInput(mediaProjection, intent);
+        mediaProjection.registerCallback(mediaProjectionCallback, null);
+        initRecorder();
+        prepareRecorder();
+        setMediaProjection(mediaProjection);
+        mediaRecorder.start();
+        setInput(mediaProjection, intent);
         startSourceManager();
         return START_STICKY;
     }

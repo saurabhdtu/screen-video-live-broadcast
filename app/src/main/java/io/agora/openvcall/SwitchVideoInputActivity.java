@@ -15,6 +15,7 @@ import android.widget.Toast;
 import io.agora.openvcall.model.ConstantApp;
 import io.agora.openvcall.model.MyEngineEventHandler;
 import io.agora.openvcall.ui.BaseActivity;
+import io.agora.openvcall.ui.CallActivity;
 import io.agora.rtc.Constants;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 
@@ -126,6 +127,13 @@ public class SwitchVideoInputActivity extends BaseActivity {
             rtcEngine().setExternalVideoSource(true, true, true);
             joinChannel(getIntent().getStringExtra(ConstantApp.ACTION_KEY_CHANNEL_NAME));
         }
+    }
+
+    public void startPreview(View view) {
+        Intent i = new Intent(this, CallActivity.class);
+        i.putExtra(ConstantApp.ACTION_KEY_CHANNEL_NAME, getIntent().getStringExtra(ConstantApp.ACTION_KEY_CHANNEL_NAME));
+        startActivity(i);
+        finish();
     }
 
 

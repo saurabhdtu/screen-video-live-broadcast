@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.agora.openvcall.R;
+import io.agora.openvcall.SwitchVideoInputActivity;
 import io.agora.openvcall.model.ConstantApp;
 import io.agora.openvcall.screenshare.NewSwitchVideoInputActivity;
 
@@ -128,14 +129,15 @@ public class MainActivity extends BaseActivity {
         String encryption = v_encryption_key.getText().toString();
         vSettings().mEncryptionKey = encryption;
 
-       /* Intent i = new Intent(MainActivity.this, CallActivity.class);
+        /*Intent i = new Intent(MainActivity.this, CallActivity.class);
         i.putExtra(ConstantApp.ACTION_KEY_CHANNEL_NAME, channel);
         i.putExtra(ConstantApp.ACTION_KEY_ENCRYPTION_KEY, encryption);
         i.putExtra(ConstantApp.ACTION_KEY_ENCRYPTION_MODE, getResources().getStringArray(R.array.encryption_mode_values)[vSettings().mEncryptionModeIndex]);*/
-        Intent i = new Intent(MainActivity.this, NewSwitchVideoInputActivity.class);
+        Intent i = new Intent(MainActivity.this, SwitchVideoInputActivity.class);
         i.putExtra(ConstantApp.ACTION_KEY_CHANNEL_NAME, channel);
         i.putExtra(ConstantApp.ACTION_KEY_ENCRYPTION_KEY, encryption);
         i.putExtra(ConstantApp.ACTION_KEY_ENCRYPTION_MODE, getResources().getStringArray(R.array.encryption_mode_values)[vSettings().mEncryptionModeIndex]);
+
         startActivity(i);
     }
 
